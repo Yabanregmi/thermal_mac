@@ -1,0 +1,1 @@
+{"start_threshold": 50.0, "stop_threshold": 45.0, "min_record_duration": 10, "pre_event_duration": 10, "save_dir": "test_output", "duration": 5, "recording_type": "EVENT", "manual_record_limit": 600, "event_recording_enabled": true, "mode": "Test"}

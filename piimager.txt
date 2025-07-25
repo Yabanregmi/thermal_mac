@@ -1,0 +1,179 @@
+Absolutely — let me walk you through **everything you've done step-by-step**, and explain in plain terms **what it means**, **why it's needed**, and **how all parts fit together** for your Compute Module 4 (CM4) to work with the Raspberry Pi 4 (RPi4) in a distributed processing system.
+
+---
+
+# 🔧 Project Goal
+
+> Build a system where the **RPi 4 handles camera input**, and the **CM4 handles processing** (e.g., image analysis, anomaly detection) — connected via USB.
+
+---
+
+# 🧱 Hardware Setup Recap
+
+You used:
+
+* **Compute Module 4 (CM4)**: A stripped-down, modular Raspberry Pi with eMMC (internal storage)
+* **CM4 PoE Board Rev 3**: A carrier board that connects and powers the CM4
+* **Raspberry Pi 4**: Used as the host to flash and control the CM4
+* **Thermal camera**: Connected to the RPi 4 for capturing data
+* **MicroUSB cable**: Used to link CM4 → RPi4 for flashing and communication
+* **Power supply (12V barrel or PoE)**: Powers the CM4 PoE board
+
+---
+
+# 🧠 What We Did — Step-by-Step
+
+---
+
+## ✅ 1. **Prepared the CM4 for USB Boot**
+
+### Why:
+
+* CM4 has no USB ports or display
+* To install an OS, it must boot from USB as a device
+
+### What you did:
+
+* Connected a jumper between **BOOT** and **GND**
+* Connected microUSB from CM4 to RPi 4
+* Powered on the CM4
+* This made CM4 enter **USB boot mode** and wait for flashing
+
+---
+
+## ✅ 2. **Built and Ran `rpiboot` on RPi4**
+
+### Why:
+
+* `rpiboot` tells CM4: “here’s your bootloader — act like a USB drive so I can install an OS on you.”
+
+### What you did:
+
+```bash
+git clone https://github.com/raspberrypi/usbboot
+cd usbboot
+make
+sudo ./rpiboot
+```
+
+### Result:
+
+* CM4’s internal storage appeared as `rpi-msd-0001` or `/dev/sda` on RPi4
+
+---
+
+## ✅ 3. **Flashed Raspberry Pi OS to the CM4**
+
+### Why:
+
+* CM4 needs an OS to boot, connect, and process frames
+
+### What you did:
+
+```bash
+rpi-imager
+```
+
+Then in **Advanced settings (Ctrl+Shift+X)** you:
+
+* Enabled SSH
+* Set username/password
+* Added USB Ethernet gadget support:
+
+  * `dtoverlay=dwc2` in `config.txt`
+  * `modules-load=dwc2,g_ether` in `cmdline.txt`
+
+### Result:
+
+* CM4 boots and creates a **USB-Ethernet connection** when plugged into RPi4 via USB
+
+---
+
+## ✅ 4. **Established USB Network Between RPi4 and CM4**
+
+### Why:
+
+* So the RPi 4 and CM4 can talk over a direct USB cable (like a virtual Ethernet cable)
+
+### What you did:
+
+**On RPi 4**:
+
+```bash
+sudo ip addr add 192.168.6.1/24 dev usb0
+sudo ip link set usb0 up
+```
+
+**On CM4 (via HDMI+keyboard first time)**:
+
+```bash
+sudo ip addr add 192.168.6.2/24 dev usb0
+sudo ip link set usb0 up
+```
+
+### Result:
+
+* You can now `ping`, `ssh`, and send data between the boards using `192.168.6.x` IPs
+
+---
+
+## ✅ 5. **Built Python Socket Programs to Exchange Data**
+
+### Why:
+
+* To let RPi 4 capture thermal frames and offload the processing to CM4
+
+### What you did:
+
+#### 📡 On RPi 4 (client):
+
+* Captures frame from thermal camera
+* Sends it to CM4 via socket over USB
+
+#### 🧠 On CM4 (server):
+
+* Listens for incoming frames
+* Processes them using OpenCV (e.g., anomaly check)
+* Sends result (e.g., `"Anomaly Detected"`) back to RPi 4
+
+### Result:
+
+* You now have **distributed computing**: camera on one device, processing on another.
+
+---
+
+# 🧭 How It All Connects Visually
+
+```
+[ Thermal Camera ] --> [ RPi 4 ] ==USB==> [ CM4 PoE Board ]
+       |                   |                |
+       |               capture()        analyze()
+       |                   |                |
+       +------> Frame ---->+                |
+                           |<--- Result ----+
+```
+
+---
+
+# ✅ What You Have Achieved
+
+* 🔧 Set up and flashed CM4 correctly
+* 📡 Established USB Ethernet link
+* 🧠 Offloaded heavy processing to CM4
+* 🔁 Built a full RPi ↔ CM4 communication loop
+* 💻 Did it all headless (no SD card or HDMI needed after flashing)
+
+---
+
+# 🧱 What You Can Do Next
+
+| Goal                          | Next Step                                |
+| ----------------------------- | ---------------------------------------- |
+| Add real AI model (e.g. CNN)  | Integrate TensorFlow or PyTorch on CM4   |
+| Compress image before sending | Use JPEG compression to reduce bandwidth |
+| Start CM4 server on boot      | Use `systemd` service or `rc.local`      |
+| Add relay or alarm trigger    | Use GPIO or mock I/O interface           |
+
+---
+
+Let me know which part you'd like to expand or automate next — you're now running a professional-grade dual-Pi distributed system.

@@ -1,0 +1,1 @@
+USE_MOCK_CAMERA = False

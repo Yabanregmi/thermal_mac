@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/yabanregmi/Desktop/Informatik/Prüfungsvorbereitung_C/SoSe_2019_Praktische_Prüfung_C/aufgabe1",
+      "program": "/Users/yabanregmi/Desktop/Informatik/Prüfungsvorbereitung_C/SoSe_2019_Praktische_Prüfung_C/aufgabe1/build/Debug/outDebug"
+    }
+  ]
+}
