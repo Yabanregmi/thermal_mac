@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 import pytest
 import numpy as np
 import cv2
-from mock_camera import MockCameraController
+from mocks.mock_camera import MockCameraController
 
 @pytest.fixture
 def mock_camera():

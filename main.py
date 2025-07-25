@@ -10,7 +10,6 @@ import csv
 from queue import Queue
 
 
-
 USE_MOCK_CAMERA = True
 USE_MOCK_IO = True
 USE_MOCK_DB = True

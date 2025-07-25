@@ -12,8 +12,7 @@ import datetime
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
-import main    # Assuming your main code is saved as main.py
-
+import main    
 
 @pytest.fixture
 def mock_frame():
@@ -25,26 +24,38 @@ def mock_frame():
 
 def test_load_config(tmp_path):
     config_file = tmp_path / "config.json"
-    config_data = {"threshold": 60, "save_dir": str(tmp_path), "duration": 10}
+    config_data = {
+        "start_threshold": 60,
+        "stop_threshold": 55,
+        "manual_record_limit": 400,
+        "save_dir": str(tmp_path),
+        "duration": 10
+    }
     config_file.write_text(json.dumps(config_data))
 
     with patch("main.CONFIG_FILE", config_file):
         main.load_config()
-        assert main.TEMP_THRESHOLD == 60
+        assert main.START_THRESHOLD == 60
+        assert main.STOP_THRESHOLD == 55
+        assert main.MANUAL_RECORD_LIMIT == 400
         assert main.POST_EVENT_DURATION == 10
         assert main.save_dir == tmp_path
 
 
+
+
 def test_save_config(tmp_path):
     with patch("main.CONFIG_FILE", tmp_path / "config.json"):
-        main.TEMP_THRESHOLD = 55
+        main.START_THRESHOLD = 55
+        main.STOP_THRESHOLD = 45
         main.save_dir = tmp_path
         main.POST_EVENT_DURATION = 7
         main.save_config()
 
         data = json.loads((tmp_path / "config.json").read_text())
-        assert data["threshold"] == 55
-        assert data["duration"] == 7
+        assert data["start_threshold"] == 55
+        assert data["stop_threshold"] == 45
+        assert data["duration"] == 7       
 
 
 def test_set_threshold():
