@@ -11,8 +11,8 @@ from queue import Queue
 
 
 USE_MOCK_CAMERA = True
-USE_MOCK_IO = True
-USE_MOCK_DB = True
+USE_MOCK_IO = False
+USE_MOCK_DB = False
 
 if USE_MOCK_IO:
     from mocks.mock_io_control import trigger_hupe, trigger_blitz, set_relais_state
@@ -127,7 +127,8 @@ def load_config():
     POST_EVENT_DURATION = config.get("duration", POST_EVENT_DURATION)
     MANUAL_RECORD_LIMIT = config.get("manual_record_limit", MANUAL_RECORD_LIMIT)
     save_dir = Path(config.get("save_dir", str(save_dir)))
-    save_dir.mkdir(exist_ok=True)
+    save_dir.mkdir(parents=True, exist_ok=True)
+
 
     event_recording_enabled = config.get("event_recording_enabled", True)
     mode = config.get("mode", SystemMode.NORMAL)

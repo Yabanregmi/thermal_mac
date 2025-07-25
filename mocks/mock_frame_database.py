@@ -1,28 +1,43 @@
-import sqlite3
 import logging
-import os
+import time
+from collections import deque
 
 class MockFrameDatabase:
-    def __init__(self, db_path="mock_frame_store.db", *args, **kwargs):
-        self.db_path = db_path
-        self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
-        self.conn.execute('''
-            CREATE TABLE IF NOT EXISTS frames (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                timestamp REAL,
-                image BLOB
-            )
-        ''')
-        self.conn.commit()
-        logging.info(f"[MOCK DB] Initialized mock database at {self.db_path}.")
+    def __init__(self, *args, buffer_seconds=10, fps=32, **kwargs):
+        """
+        A mock database that stores frames in memory for anomaly detection.
+        buffer_seconds: how many seconds of frames to keep in memory.
+        fps: expected frames per second.
+        """
+        self.frame_buffer = deque(maxlen=buffer_seconds * fps)
+        self.timestamp_buffer = deque(maxlen=buffer_seconds * fps)
+        self.fps = fps
+        logging.info("[MOCK DB] Initialized in-memory frame storage.")
 
     def insert_frame(self, frame):
-        logging.info("[MOCK DB] Frame inserted (simulated).")
+        """
+        Store the frame with the current timestamp in memory.
+        """
+        self.frame_buffer.append(frame)
+        self.timestamp_buffer.append(time.time())
+        logging.info(f"[MOCK DB] Frame stored (total {len(self.frame_buffer)} frames).")
 
     def get_frames_from_last_n_seconds(self, seconds=10):
-        logging.info(f"[MOCK DB] Returning empty frame list for last {seconds}s.")
-        return []
+        """
+        Return frames from the last `seconds` seconds.
+        """
+        current_time = time.time()
+        frames = [
+            f for f, ts in zip(self.frame_buffer, self.timestamp_buffer)
+            if (current_time - ts) <= seconds
+        ]
+        logging.info(f"[MOCK DB] Returning {len(frames)} frames from last {seconds} seconds.")
+        return frames
 
     def close(self):
-        self.conn.close()
+        """
+        Clear the buffer (simulating DB close).
+        """
         logging.info("[MOCK DB] Database closed.")
+        self.frame_buffer.clear()
+        self.timestamp_buffer.clear()
