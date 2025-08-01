@@ -31,7 +31,7 @@ MIN_RECORD_DURATION = 10  # Minimum record time (seconds)
 PRE_EVENT_DURATION = 10   # Pre-event frames for anomaly video
 
 START_THRESHOLD = 50.0  # Default start threshold (°C)
-STOP_THRESHOLD = 45.0   # Default stop threshold (°C)
+STOP_THRESHOLD = 45.0   # Default stop thre shold (°C)
 
 TEMP_THRESHOLD = 50.0
 POST_EVENT_DURATION = 5

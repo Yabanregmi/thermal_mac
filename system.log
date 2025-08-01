@@ -44064,3 +44064,98 @@
 2025-07-25 22:01:11,177 [INFO] Shutting down threads...
 2025-07-25 22:01:11,290 [INFO] [DB] Connection closed.
 2025-07-25 22:01:11,294 [INFO] Shutdown complete.
+2025-07-30 12:41:01,710 [INFO] Config loaded.
+2025-07-30 12:41:03,150 [INFO] [DB] Connected to frame_store.db
+2025-07-30 12:41:22,545 [INFO] Exiting now...
+2025-07-30 12:41:22,545 [INFO] Shutting down threads...
+2025-07-30 12:41:22,653 [INFO] [DB] Connection closed.
+2025-07-30 12:41:22,657 [INFO] Shutdown complete.
+2025-07-30 12:41:25,572 [INFO] Config loaded.
+2025-07-30 12:41:26,969 [INFO] [DB] Connected to frame_store.db
+2025-07-30 12:41:49,929 [INFO] New anomaly detected: Temp = 58.49 °C
+2025-07-30 12:41:49,930 [INFO] HUPE TRIGGERED
+2025-07-30 12:41:49,930 [INFO] HUPE Trigger succeeded on attempt 1.
+2025-07-30 12:41:49,930 [INFO] BLITZ TRIGGERED
+2025-07-30 12:41:49,930 [INFO] BLITZ Trigger succeeded on attempt 1.
+2025-07-30 12:41:49,930 [INFO] RELAIS SET TO: ON
+2025-07-30 12:41:49,930 [INFO] Set RELAIS ON succeeded on attempt 1.
+2025-07-30 12:41:49,931 [INFO] Processing anomaly event at 58.49°C (20250730_124149)
+2025-07-30 12:41:49,931 [INFO] [DB] Connected to frame_store.db
+2025-07-30 12:41:49,995 [INFO] [DB] Connection closed.
+2025-07-30 12:41:55,213 [INFO] Combined anomaly video saved as /private/var/folders/nx/vlcz2lhn3yl3st02tnt8vl880000gn/T/pytest-of-yabanregmi/pytest-2/test_save_anomaly_video0/merged_anomaly_temp58_20250730_124149.avi
+2025-07-30 12:42:09,357 [INFO] [CONFIG CHANGE] SystemMode changed from Normal to Test (by server)
+2025-07-30 12:42:09,359 [INFO] Config saved.
+2025-07-30 12:42:10,417 [INFO] Recording started.
+2025-07-30 12:42:15,483 [INFO] Stopped after 5.1s.
+2025-07-30 12:42:15,484 [INFO] Recording finished and saved.
+2025-07-30 12:42:27,951 [INFO] Exiting now...
+2025-07-30 12:42:27,951 [INFO] Shutting down threads...
+2025-07-30 12:42:28,041 [INFO] [DB] Connection closed.
+2025-07-30 12:42:28,044 [INFO] Shutdown complete.
+2025-07-30 13:06:32,711 [INFO] Config loaded.
+2025-07-30 13:06:36,130 [INFO] [DB] Connected to frame_store.db
+2025-07-30 13:06:38,157 [INFO] Exiting now...
+2025-07-30 13:06:38,157 [INFO] Shutting down threads...
+2025-07-30 13:06:38,267 [INFO] [DB] Connection closed.
+2025-07-30 13:06:38,273 [INFO] Shutdown complete.
+2025-07-30 13:55:39,859 [INFO] Config loaded.
+2025-07-30 13:55:41,335 [INFO] [DB] Connected to frame_store.db
+2025-07-30 13:55:44,472 [INFO] [CONFIG CHANGE] SystemMode changed from Test to Normal (by server)
+2025-07-30 13:55:44,473 [INFO] Config saved.
+2025-07-30 13:55:52,392 [INFO] Exiting now...
+2025-07-30 13:55:52,393 [INFO] Shutting down threads...
+2025-07-30 13:55:52,513 [INFO] [DB] Connection closed.
+2025-07-30 13:55:52,519 [INFO] Shutdown complete.
+2025-07-30 14:14:01,886 [INFO] Config loaded.
+2025-07-30 14:14:03,338 [INFO] [DB] Connected to frame_store.db
+2025-07-30 14:14:05,383 [INFO] Exiting now...
+2025-07-30 14:14:05,384 [INFO] Shutting down threads...
+2025-07-30 14:14:05,479 [INFO] [DB] Connection closed.
+2025-07-30 14:14:05,485 [INFO] Shutdown complete.
+2025-07-31 15:45:34,304 [INFO] Config loaded.
+2025-07-31 15:45:36,014 [INFO] [DB] Connected to frame_store.db
+2025-07-31 15:45:50,657 [INFO] New anomaly detected: Temp = 61.59 °C
+2025-07-31 15:45:50,658 [INFO] HUPE TRIGGERED
+2025-07-31 15:45:50,658 [INFO] HUPE Trigger succeeded on attempt 1.
+2025-07-31 15:45:50,658 [INFO] BLITZ TRIGGERED
+2025-07-31 15:45:50,658 [INFO] BLITZ Trigger succeeded on attempt 1.
+2025-07-31 15:45:50,659 [INFO] RELAIS SET TO: ON
+2025-07-31 15:45:50,659 [INFO] Set RELAIS ON succeeded on attempt 1.
+2025-07-31 15:45:50,659 [INFO] Processing anomaly event at 61.59°C (20250731_154550)
+2025-07-31 15:45:50,660 [INFO] [DB] Connected to frame_store.db
+2025-07-31 15:45:50,723 [INFO] [DB] Connection closed.
+2025-07-31 15:45:55,905 [INFO] Combined anomaly video saved as /private/var/folders/nx/vlcz2lhn3yl3st02tnt8vl880000gn/T/pytest-of-yabanregmi/pytest-2/test_save_anomaly_video0/merged_anomaly_temp61_20250731_154550.avi
+2025-07-31 15:46:02,187 [INFO] New anomaly detected: Temp = 59.49 °C
+2025-07-31 15:46:02,187 [INFO] HUPE TRIGGERED
+2025-07-31 15:46:02,187 [INFO] HUPE Trigger succeeded on attempt 1.
+2025-07-31 15:46:02,187 [INFO] BLITZ TRIGGERED
+2025-07-31 15:46:02,187 [INFO] BLITZ Trigger succeeded on attempt 1.
+2025-07-31 15:46:02,188 [INFO] RELAIS SET TO: ON
+2025-07-31 15:46:02,188 [INFO] Set RELAIS ON succeeded on attempt 1.
+2025-07-31 15:46:02,188 [INFO] Processing anomaly event at 59.49°C (20250731_154602)
+2025-07-31 15:46:02,189 [INFO] [DB] Connected to frame_store.db
+2025-07-31 15:46:02,247 [INFO] [DB] Connection closed.
+2025-07-31 15:46:07,381 [INFO] Combined anomaly video saved as /private/var/folders/nx/vlcz2lhn3yl3st02tnt8vl880000gn/T/pytest-of-yabanregmi/pytest-2/test_save_anomaly_video0/merged_anomaly_temp59_20250731_154602.avi
+2025-07-31 15:46:09,653 [INFO] [CONFIG CHANGE] SystemMode changed from Normal to Test (by server)
+2025-07-31 15:46:09,654 [INFO] Config saved.
+2025-07-31 15:46:13,083 [INFO] [CONFIG CHANGE] SystemMode changed from Test to Test (by server)
+2025-07-31 15:46:13,084 [INFO] Config saved.
+2025-07-31 15:46:17,945 [INFO] Recording started.
+2025-07-31 15:46:23,024 [INFO] Stopped after 5.1s.
+2025-07-31 15:46:23,024 [INFO] Recording finished and saved.
+2025-07-31 15:46:23,175 [INFO] Recording started.
+2025-07-31 15:46:28,241 [INFO] Stopped after 5.1s.
+2025-07-31 15:46:28,242 [INFO] Recording finished and saved.
+2025-07-31 15:46:32,939 [INFO] Recording started.
+2025-07-31 15:46:38,003 [INFO] Stopped after 5.1s.
+2025-07-31 15:46:38,004 [INFO] Recording finished and saved.
+2025-07-31 15:46:41,240 [INFO] [CONFIG CHANGE] SystemMode changed from Test to Normal (by server)
+2025-07-31 15:46:41,241 [INFO] Config saved.
+2025-07-31 15:46:42,904 [INFO] [CONFIG CHANGE] SystemMode changed from Normal to Fault (by server)
+2025-07-31 15:46:42,905 [INFO] Config saved.
+2025-07-31 15:46:45,003 [INFO] [CONFIG CHANGE] SystemMode changed from Fault to Test (by server)
+2025-07-31 15:46:45,003 [INFO] Config saved.
+2025-07-31 15:46:48,237 [INFO] Exiting now...
+2025-07-31 15:46:48,237 [INFO] Shutting down threads...
+2025-07-31 15:46:48,372 [INFO] [DB] Connection closed.
+2025-07-31 15:46:48,380 [INFO] Shutdown complete.
